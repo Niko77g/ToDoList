@@ -1,6 +1,0 @@
-dnes dokoncit ulohu
-vyvencit psiAhoj test
-Test 2
-test3
-
-Ahojtest

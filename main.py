@@ -1,16 +1,27 @@
 import datetime
-
+class Task:
+    def __init__(self,name,priority):
+        self.name = name
+        self.priority = priority
 def readtodolist():
     with open("FileFolder/datafile.txt","r") as  file:
         for line in file:
             print(line, end="\n")
 def addtodolist():
-    with open("FileFolder/datafile.txt","a") as  file:
-        new_content = input("Zadaj novy todolist: ")
-        file.write(new_content + "\n")
-        print("Pridavam novy todolist")
+    new_content = input("Zadaj nový todolist: ")
+    while True:
+        priority = input("Zadaj prioritu danej úlohy (1-3): ")
+        if priority in ["1", "2", "3"]:
+            break
+        else:
+            print("Neplatný rozsah priority!")
+
+    task = Task(new_content,int(priority))
+    with open("FileFolder/datafile.txt", "a") as file:
+        file.write(f"[{task.priority}] {task.name} \n")
+        print("Pridávam nový todolist")
     readtodolist()
-    
+
 while True:
    valueofinput = input("Zadaj instrukciu, ktoru chces vykonat: ")
    if valueofinput == "r":
