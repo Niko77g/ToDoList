@@ -5,9 +5,17 @@ class Task:
         self.priority = priority
 def readtodolist():
     with open("FileFolder/datafile.txt","r") as  file:
-        for line in file:
-            print(line, end="\n")
-    
+         for line in file:
+            print(line, end="\n")   
+
+def deletetodolist():
+    with open("FileFolder/datafile.txt","r") as  file:
+       lines = file.readlines()
+    index = int(input("zadaj index tasku, ktorý chces vymazat: "))
+    del lines[index -1]
+    with open("FileFolder/datafile.txt","w") as file:
+        file.writelines(lines)
+    print("Uloha vymazana!")
 def addtodolist():
     time_object = time.localtime()        
     local_time = time.strftime("(%B-%d-%Y)", time_object)
@@ -31,6 +39,8 @@ while True:
         readtodolist()
    elif valueofinput == "a":
        addtodolist()
+   elif valueofinput == "d":
+       deletetodolist()
    elif valueofinput == "q":
         print("ukoncujem program")
         break
